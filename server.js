@@ -10,16 +10,12 @@ const httpServer = createServer(app);
 // Configure CORS for Socket.IO
 const io = new Server(httpServer, {
   cors: {
-    origin: ["https://multiplayeranime.vercel.app", "http://localhost:5173", "http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials: true
+    origin: "*",
+    methods: ["GET", "POST"]
   }
 });
 
-app.use(cors({
-  origin: ["https://multiplayeranime.vercel.app", "http://localhost:5173", "http://localhost:3000"],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 // In-memory storage for rooms
